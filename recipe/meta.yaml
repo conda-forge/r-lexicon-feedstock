@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = '1.0.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -9,23 +9,25 @@ package:
 source:
   fn: lexicon_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/lexicon_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/lexicon/lexicon_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/lexicon_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/lexicon/lexicon_{{ version }}.tar.gz
   sha256: f5e0d8b00d353fcb50babd0e0f4a1cb788fc5f9c18926a65d46df95df72bee71
 
 build:
-  number: 1
+  merge_build_host: True  # [win]
+  number: 2
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-data.table
     - r-syuzhet >=1.0.1
-
   run:
     - r-base
     - r-data.table
@@ -33,20 +35,23 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('lexicon')"  # [not win]
+    - $R -e "library('lexicon')"           # [not win]
     - "\"%R%\" -e \"library('lexicon')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/package=lexicon
-  license: MIT
+  home: https://github.com/trinker/lexicon
+  license: GPL-3
   summary: A collection of lexical hash tables, dictionaries, and word lists.
-  license_family: MIT
+  license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
+    - CurtLH
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
     - cbrueffer
-    - CurtLH
+    - dbast
