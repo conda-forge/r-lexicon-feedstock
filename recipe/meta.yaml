@@ -14,9 +14,9 @@ source:
   sha256: f5e0d8b00d353fcb50babd0e0f4a1cb788fc5f9c18926a65d46df95df72bee71
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 2
-  skip: true  # [win32]
+  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
@@ -43,8 +43,7 @@ about:
   license: GPL-3
   summary: A collection of lexical hash tables, dictionaries, and word lists.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
