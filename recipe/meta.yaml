@@ -1,4 +1,4 @@
-{% set version = '1.0.0' %}
+{% set version = "1.1.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lexicon_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lexicon/lexicon_{{ version }}.tar.gz
-  sha256: f5e0d8b00d353fcb50babd0e0f4a1cb788fc5f9c18926a65d46df95df72bee71
+  sha256: 1c4010dfe596a5a103be5bb271efb810edabbd602f5c5d7953ba7eeec33cba20
 
 build:
   noarch: generic
   merge_build_host: True  # [win]
-  number: 1002
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
