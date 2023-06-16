@@ -1,11 +1,11 @@
-About r-lexicon
-===============
+About r-lexicon-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-lexicon-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/trinker/lexicon
 
 Package license: GPL-3
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-lexicon-feedstock/blob/main/LICENSE.txt)
 
 Summary: A collection of lexical hash tables, dictionaries, and word lists.
 
